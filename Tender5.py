@@ -1,3 +1,9 @@
+import mysql.connector
+myeb=mysql.connector.connect(host="localhost",
+                            user="root",
+                            password="S@16112001",
+                            database="tender_management_system")
+print(myeb)
 ans='y'
 Tender5=[]
 while ans=='y':

@@ -1,3 +1,16 @@
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",
+                             user="root",
+                             password="S@16112001",
+                             database="tender_management_system")
+cursor=mydb.cursor()
+table_creation_query="""create table Tenders_Table(tender_Id int primary key not null auto_increment,
+                        title varchar(30) not null,
+                        tender_start Date,
+                        tender_end Date,
+                        Discription varchar(40) not null)"""
+cursor.execute(table_creation_query)
+mydb.commit()
 ans="y"
 Tender=[]
 while ans=="y":
@@ -29,9 +42,20 @@ while ans=="y":
         break
     else:
         print("Invalid option. Please enter between 1 to 7.")
-    ans = input("Do you want to continue (y/n)? ")
+    
 
 print("Tenders:", Tender)
+
+insert_query="""insert into Tenders_Table (tender_Id,title,tender_start Date,tender_end Date,discription)
+                values(%s,%s,%s,%s,%s)"""
+
+
+cursor.execute(insert_query)
+mydb.commit()
+ans = input("Do you want to continue (y/n)? ")
+
+cursor.close()
+mydb.close()
 
 
 

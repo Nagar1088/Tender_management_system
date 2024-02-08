@@ -1,26 +1,31 @@
-ans="y"
-Tender1=[]
-while ans=="y":
-    print("1.Supplier_Id")
-    print("2.Name")
-    print("3.Contact_info")
+import mysql.connector
+myab=mysql.connector.connect(host="localhost",
+                             user="root",
+                             password="S@16112001",
+                             database="tender_management_system")
+print(myab)
+ans='y'
+Tender2=[]
+while ans=='y':
+    print("1.supplierId")
+    print("2.name")
+    print("3.contactInfo")
     print("4.Exit")
-    print("enter tender between 1 to 4:")
-    choice=int(input("Enter number between1 to 4:"))
+    print("Enter number between 1 to 4")
+    choice=int(input("Enter number between 1 to 4:"))
     if(choice==1):
-       tender1_id=input("Enter Supplier_Id:")
-       Tender1.append({"Supplier_Id":tender1_id})
-    elif (choice==2):
-        tender1_id=input("Enter Name:")
-        Tender1.append({"Name":tender1_id})
+        tender2_id=input("Enter supplierId:")
+        Tender2.append({"supplierId":tender2_id})
+    elif(choice==2):
+        tender2_id=input("Enter name:")
+        Tender2.append({"name":tender2_id})
     elif(choice==3):
-        tender1_id=input("Enter Contact_info:")
-        Tender1.append({"Contact_info":tender1_id})
+        tender2_id=input("Enter contactInfo:")
+        Tender2.append({"contactInfo":tender2_id})
     elif(choice==4):
         break
     else:
-        print("Invalid Option.Please Enter between 1 to 4")
+        print("Error 404.Please enter valid number")
     
     ans=input("Do you want to continue(y/n)?")
-    print("Tenders",Tender1)
-    
+    print("Tenders",Tender2)
