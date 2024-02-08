@@ -3,7 +3,8 @@ mybb=mysql.connector.connect(host="localhost",
                              user="root",
                              password="S@16112001",
                              database="tender_management_system")
-print(mybb)
+cursor=mybb.cursor()
+table_creation_query="""create table Bids_tables(           )"""
 ans='y'
 Tender3=[]
 while ans=='y':
@@ -36,4 +37,13 @@ while ans=='y':
         print("Error 404.Please enter the valid number")
     ans=input("Do you want to continue(y/n)?")
     print("Tenders",Tender3)
+
+insert_query="""insert into Bids_table()
+                values
+                (            )"""
+cursor.execute(insert_query)
+cursor.commit()
+cursor.close()
+mybb.close()
+
 

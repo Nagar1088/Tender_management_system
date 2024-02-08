@@ -3,7 +3,8 @@ mycb=mysql.connector.connect(host="localhost",
                              user="root",
                              password="S@16112001",
                              database="tender_management_system")
-print(mycb)
+cursor=mycb.cursor()
+table_creation_query="""create table awardedcontracts_table(     )"""
 ans='y'
 Tender4=[]
 while ans=='y':
@@ -32,3 +33,11 @@ while ans=='y':
         print("Error 404.Please enter the valid number")
     ans=input("Do you want to continue(y/n)?")
     print("Tenders",Tender4)
+
+insert_query="""insert into awardedcontracts_table()
+                values
+                (  )"""
+cursor.execute(insert_query)
+cursor.commit()
+cursor.close()
+mycb.close()

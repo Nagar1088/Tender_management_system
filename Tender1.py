@@ -3,7 +3,10 @@ myab=mysql.connector.connect(host="localhost",
                              user="root",
                              password="S@16112001",
                              database="tender_management_system")
-print(myab)
+cursor=myab.cursor()
+table_creation_query="""create table suppliers_table(supplierId int primary key int not null auto_increment,
+                        name varchar(30) not null,
+                        contactInfo int not null unique)"""
 ans='y'
 Tender2=[]
 while ans=='y':
@@ -27,5 +30,14 @@ while ans=='y':
     else:
         print("Error 404.Please enter valid number")
     
-    ans=input("Do you want to continue(y/n)?")
+    
     print("Tenders",Tender2)
+
+insert_query="""insert into  suppliers_table(supplierId,name,contactInfo)
+                values
+                (%s,%s,%s)"""
+cursor.execute(insert_query)
+myab.commit()
+ans=input("Do you want to continue(y/n)?")
+cursor.close()
+myab.close()
