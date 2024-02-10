@@ -4,46 +4,20 @@ mybb=mysql.connector.connect(host="localhost",
                              password="S@16112001",
                              database="tender_management_system")
 cursor=mybb.cursor()
-table_creation_query="""create table Bids_tables(           )"""
-ans='y'
-Tender3=[]
-while ans=='y':
-    print("1.BidID")
-    print("2.TenderID")
-    print("3.SupplierID")
-    print("4.Amount")
-    print("5.SubmissionDate")
-    print("6.Exit")
-    print("Enter number between 1 to 6")
-    choice=int(input("Enter number between 1 to 6:"))
-    if(choice==1):
-        Tender3_Id=input("Enter BidID:")
-        Tender3.append({"BidID":Tender3_Id})
-    elif(choice==2):
-        Tender3_Id=input("Enter TenderID:")
-        Tender3.append({"TenderID":Tender3_Id})
-    elif(choice==3):
-        Tender3_Id=input("Enter SupplierID")
-        Tender3.append({"SupplierId":Tender3_Id})
-    elif(choice==4):
-        Tender3_Id=input("Enter Amount:")
-        Tender3.append({"Amount":Tender3_Id})
-    elif(choice==5):
-        Tender3_Id=input("Enter SubmissionDate:")
-        Tender3.append({"SubmissionDate":Tender3_Id})
-    elif(choice==6):
+
+while True:
+
+    tender_Id=int(input("Enter tender_Id:"))
+    name=input("Enter name:")
+    discription=input("Enter discription:")
+    quantity=int(input("Enter quantity"))
+
+    query="insert into item_id(tender_Id,name,discription,quantity) values(%s,%s,%s,%s)"
+    cursor.execute(query,(tender_Id,name,discription,quantity))
+    
+    mybb.commit()
+    
+    choice = input("1 -> Enter more\n2 -> Exit\nEnter choice: ")
+    if choice == '2':
         break
-    else:
-        print("Error 404.Please enter the valid number")
-    ans=input("Do you want to continue(y/n)?")
-    print("Tenders",Tender3)
-
-insert_query="""insert into Bids_table()
-                values
-                (            )"""
-cursor.execute(insert_query)
-cursor.commit()
-cursor.close()
-mybb.close()
-
 
