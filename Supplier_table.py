@@ -1,9 +1,6 @@
-import mysql.connector
-myab=mysql.connector.connect(host="localhost",
-                             user="root",
-                             password="S@16112001",
-                             database="tender_management_system")
-cursor=myab.cursor()
+import Database
+mydb = Database.connect_to_database()
+cursor=mydb.cursor()
 
 while True:
 
@@ -14,7 +11,7 @@ while True:
     query="insert into suppliers_table(supplier_Id,name,contact_info) values(%s,%s,%s)"
     cursor.execute(query,( supplier_Id,name,contact_info))
 
-    myab.commit()
+    mydb.commit()
     
     choice = input("1 -> Enter more\n2 -> Exit\nEnter choice: ")
     if choice == '2':

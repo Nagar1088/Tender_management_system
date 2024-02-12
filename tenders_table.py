@@ -1,10 +1,7 @@
-import mysql.connector
-myab=mysql.connector.connect(host="localhost",
-                             user="root",
-                             password="S@16112001",
-                             database="tender_management_system")
+import Database
+mydb = Database.connect_to_database()
 
-cursor = myab.cursor()
+cursor = mydb.cursor()
 
 while True:
     
@@ -17,7 +14,7 @@ while True:
     query = "INSERT INTO tenders_table (tender_Id, title, tender_start, tender_end, discription) VALUES (%s, %s, %s, %s, %s)"
     cursor.execute(query, (tender_Id, title, tender_start, tender_end, discription))
 
-    myab.commit()
+    mydb.commit()
 
     choice = input("1 -> Enter more\n2 -> Exit\nEnter choice: ")
     if choice == '2':
